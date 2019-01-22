@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Alexa.PostnordTrackAndTrace.Tests": {
+      "commandName": "Project"
+    }
+  }
+}

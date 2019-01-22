@@ -1,0 +1,217 @@
+{
+  "TrackingInformationResponse": {
+    "shipments": [
+      {
+        "shipmentId": "7101478886",
+        "assessedNumberOfItems": 1,
+        "deliveryDate": "2019-01-04T08:53:28",
+        "service": {
+          "code": "17",
+          "name": "PostNord MyPack Home"
+        },
+        "consignor": {
+          "name": "GLS:Att.:Logistikhotellet",
+          "address": {
+            "street1": "Kokmose 3",
+            "city": "KOLDING",
+            "countryCode": "DNK",
+            "country": "Denmark",
+            "postCode": "6000"
+          }
+        },
+        "consignee": {
+          "address": {
+            "city": "Virum",
+            "countryCode": "DNK",
+            "country": "Denmark",
+            "postCode": "2830"
+          }
+        },
+        "pickupParty": {
+          "name": "TD Tech Data AB",
+          "address": {
+            "street1": "Lillsjövägen 19",
+            "city": "Jordbro",
+            "countryCode": "SWE",
+            "country": "Sweden",
+            "postCode": "13650"
+          },
+          "contact": {}
+        },
+        "statusText": {
+          "header": "The shipment has been delivered to the recipient",
+          "body": "The shipment was delivered on 1/4/2019 at 8:53 AM"
+        },
+        "status": "DELIVERED",
+        "totalWeight": {
+          "value": "3.4",
+          "unit": "kg"
+        },
+        "totalVolume": {
+          "value": "0.012",
+          "unit": "m3"
+        },
+        "items": [
+          {
+            "itemId": "00373303810003399402",
+            "dropOffDate": "2018-12-27T18:43:00",
+            "deliveryDate": "2019-01-04T08:53:28",
+            "typeOfItemActual": "UNDEF",
+            "typeOfItemActualName": "-",
+            "status": "DELIVERED",
+            "statusText": {
+              "header": "The shipment item has been delivered to the recipient",
+              "body": "The shipment item was delivered on 1/4/2019 at 8:53 AM"
+            },
+            "acceptor": {
+              "signatureReference": "00373303810003399402"
+            },
+            "statedMeasurement": {
+              "weight": {
+                "value": "3.4",
+                "unit": "kg"
+              },
+              "length": {
+                "value": "0.42",
+                "unit": "m"
+              },
+              "height": {
+                "value": "0.11",
+                "unit": "m"
+              },
+              "width": {
+                "value": "0.29",
+                "unit": "m"
+              },
+              "volume": {
+                "value": "0.012",
+                "unit": "m3"
+              }
+            },
+            "assessedMeasurement": {
+              "weight": {
+                "value": "3.38",
+                "unit": "kg"
+              }
+            },
+            "events": [
+              {
+                "eventTime": "2018-12-27T13:30:00",
+                "eventCode": "68",
+                "status": "INFORMED",
+                "eventDescription": "The electronic shipping instructions have been received",
+                "location": {
+                  "displayName": "GLS:Att.:Logistikhotellet",
+                  "name": "GLS:Att.:Logistikhotellet"
+                }
+              },
+              {
+                "eventTime": "2018-12-27T18:43:00",
+                "eventCode": "31",
+                "status": "EN_ROUTE",
+                "eventDescription": "The shipment item is under transportation",
+                "location": {
+                  "locationId": "126",
+                  "displayName": "Segeltorp",
+                  "name": "Segeltorp",
+                  "countryCode": "SWE",
+                  "country": "Sweden",
+                  "postcode": "14172",
+                  "city": "Segeltorp",
+                  "locationType": "HUB"
+                }
+              },
+              {
+                "eventTime": "2019-01-03T20:35:59",
+                "eventCode": "31",
+                "status": "EN_ROUTE",
+                "eventDescription": "The shipment item is under transportation",
+                "location": {
+                  "locationId": "0712",
+                  "displayName": "Køge Pakkecenter - TKJ",
+                  "name": "Køge Pakkecenter - TKJ",
+                  "countryCode": "DNK",
+                  "country": "Denmark",
+                  "postcode": "4600",
+                  "city": "Køge",
+                  "locationType": "HUB"
+                }
+              },
+              {
+                "eventTime": "2019-01-03T22:17:46",
+                "eventCode": "355",
+                "status": "EN_ROUTE",
+                "eventDescription": "The shipment item is under transportation",
+                "location": {
+                  "locationId": "0704",
+                  "displayName": "Brøndby Pakkecenter - BRC",
+                  "name": "Brøndby Pakkecenter - BRC",
+                  "countryCode": "DNK",
+                  "country": "Denmark",
+                  "postcode": "2605",
+                  "city": "Brøndby",
+                  "locationType": "HUB"
+                }
+              },
+              {
+                "eventTime": "2019-01-04T07:31:11",
+                "eventCode": "z114",
+                "status": "EN_ROUTE",
+                "eventDescription": "The shipment item has arrived at the distribution terminal",
+                "location": {
+                  "locationId": "2920",
+                  "displayName": "Charlottenlund",
+                  "name": "Charlottenlund",
+                  "countryCode": "DNK",
+                  "country": "Denmark",
+                  "postcode": "2800",
+                  "city": "Kgs. Lyngby",
+                  "locationType": "DEPOT"
+                }
+              },
+              {
+                "eventTime": "2019-01-04T08:53:28",
+                "eventCode": "21",
+                "status": "DELIVERED",
+                "eventDescription": "The shipment item has been delivered",
+                "location": {
+                  "locationId": "2920",
+                  "displayName": "Charlottenlund",
+                  "name": "Charlottenlund",
+                  "countryCode": "DNK",
+                  "country": "Denmark",
+                  "postcode": "2800",
+                  "city": "Kgs. Lyngby",
+                  "locationType": "DEPOT"
+                }
+              }
+            ],
+            "references": [
+              {
+                "value": "7101478886",
+                "type": "CU",
+                "name": "Sender's reference"
+              }
+            ],
+            "itemRefIds": [],
+            "freeTexts": []
+          }
+        ],
+        "additionalServices": [
+          {
+            "code": "36",
+            "name": "FlexChange"
+          }
+        ],
+        "splitStatuses": [],
+        "shipmentReferences": [
+          {
+            "value": "7101478886",
+            "type": "CU",
+            "name": "Sender's reference"
+          }
+        ]
+      }
+    ]
+  }
+}

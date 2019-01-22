@@ -1,10 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <AzureFunctionsVersion>v2</AzureFunctionsVersion>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Alexa.NET" Version="1.5.7" />
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.24" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Alexa.NET.APL\Alexa.NET.APL\Alexa.NET.APL.csproj" />
+    <ProjectReference Include="..\Postnord.API\Postnord.API.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
