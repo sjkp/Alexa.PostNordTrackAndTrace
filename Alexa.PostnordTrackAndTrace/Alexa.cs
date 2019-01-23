@@ -31,6 +31,12 @@ namespace Alexa.PostnordTrackAndTrace
             log.LogInformation(json);
             var skillRequest = JsonConvert.DeserializeObject<SkillRequest>(json);
 
+            bool isValid = await ValidateRequest(req, log, skillRequest);
+            if (!isValid)
+            {
+                return new BadRequestResult();
+            }
+
             var requestType = skillRequest.GetRequestType();
             var session = skillRequest.Session;
             var aplSupport = skillRequest.Context.System.Device.IsInterfaceSupported("Alexa.Presentation.APL");
@@ -116,6 +122,16 @@ namespace Alexa.PostnordTrackAndTrace
                     response = ResponseBuilder.Empty();
                     response.Response.ShouldEndSession = true;
                 }
+                if (intentRequest.Intent.Name == "AMAZON.CancelIntent")
+                {
+                    response = ResponseBuilder.Tell("Cancelling.");
+                }
+            }
+            else if (requestType == typeof(SessionEndedRequest))
+            {
+                log.LogInformation("Session ended");
+                response = ResponseBuilder.Empty();
+                response.Response.ShouldEndSession = true;
             }
 
             return new OkObjectResult(response);
@@ -190,6 +206,57 @@ namespace Alexa.PostnordTrackAndTrace
             if (session.Attributes == null)
                 session.Attributes = new Dictionary<string, object>();
             session.Attributes[key] = value;
+        }
+
+        private static async Task<bool> ValidateRequest(HttpRequest request, ILogger log, SkillRequest skillRequest)
+        {
+            request.Headers.TryGetValue("SignatureCertChainUrl", out var signatureChainUrl);
+            if (string.IsNullOrWhiteSpace(signatureChainUrl))
+            {
+                log.LogError("Validation failed. Empty SignatureCertChainUrl header");
+                return false;
+            }
+
+            Uri certUrl;
+            try
+            {
+                certUrl = new Uri(signatureChainUrl);
+            }
+            catch
+            {
+                log.LogError($"Validation failed. SignatureChainUrl not valid: {signatureChainUrl}");
+                return false;
+            }
+
+            request.Headers.TryGetValue("Signature", out var signature);
+            if (string.IsNullOrWhiteSpace(signature))
+            {
+                log.LogError("Validation failed - Empty Signature header");
+                return false;
+            }
+
+            request.Body.Position = 0;
+            var body = await request.ReadAsStringAsync();
+            request.Body.Position = 0;
+
+            if (string.IsNullOrWhiteSpace(body))
+            {
+                log.LogError("Validation failed - the JSON is empty");
+                return false;
+            }
+
+            bool isTimestampValid = RequestVerification.RequestTimestampWithinTolerance(skillRequest);
+            bool valid = await RequestVerification.Verify(signature, certUrl, body);
+
+            if (!valid || !isTimestampValid)
+            {
+                log.LogError("Validation failed - RequestVerification failed");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
